@@ -1,23 +1,11 @@
 package main
 
+import (
+	"fmt"
+	"func/file"
+)
+
 func main() {
-	// emptyFile, err := file.New("/tmp/empty.txt")
-	// if err != nil {
-	// 	panic(err)
-	// }
-
-	// fillerFile, err := file.New("/tmp/file.txt", file.UID(1000), file.Contents("My text for file"))
-	// if err != nil {
-	// 	panic(err)
-	// }
-
-	// fmt.Println(emptyFile, fillerFile)
-
-	assembly := car.NewBuilder().Color(car.RedColor)
-
-	familyCar := assembly.Wheels(car.SportsWheels).TopSpeed(50 * car.MPH).Build()
-	familyCar.Drive()
-
-	sportsCar := assembly.Wheels(car.SteelWheels).TopSpeed(150 * car.MPH).Build()
-	sportsCar.Drive()
+	Opcns, _ := file.NewFile("C:/Users/77679/Documents/GO/rep-study/myTextFile.txt", file.NewContent("my content in my this file ye boi"), file.NewGID(1000), file.NewUID(1000))
+	fmt.Println(Opcns)
 }
