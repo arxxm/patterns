@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"func/singleton"
 )
 
 func main() {
@@ -26,7 +27,7 @@ func main() {
 	// fmt.Printf("Igloo House Num Floor: %d\n", iglooHouse.floor)
 
 	for i := 0; i < 5; i++ {
-		go singleton.getInstance()
+		go singleton.GetInstance()
 	}
 
 	// Scanln is similar to Scan, but stops scanning at a newline and

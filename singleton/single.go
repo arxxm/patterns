@@ -12,7 +12,7 @@ var singleInstance *single
 
 var lock = &sync.Mutex{}
 
-func getInstance() *single {
+func GetInstance() *single {
 	if singleInstance == nil {
 		lock.Lock()
 		defer lock.Unlock()

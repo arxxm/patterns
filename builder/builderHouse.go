@@ -90,6 +90,7 @@ func (b *iglooBuilder) getHouse() house {
 	}
 }
 
+//director
 func NewDirector(b iBuilder) *director {
 	return &director{
 		builder: b,
