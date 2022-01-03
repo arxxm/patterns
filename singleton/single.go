@@ -10,7 +10,8 @@ type single struct {
 
 var singleInstance *single
 
-var lock = &sync.Mutex{}
+// var lock = &sync.Mutex{}
+var lock sync.Mutex
 
 func GetInstance() *single {
 	if singleInstance == nil {
