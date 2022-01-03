@@ -1,109 +1,57 @@
 package builder
 
-type director struct {
-	builder iBuilder
+type normalBuilder struct{
+	windowType string
+	doorType string
+	floor int
 }
 
 type house struct {
-	windowType string
-	doorType   string
-	floor      int
+    windowType string
+    doorType   string
+    floor      int
 }
 
 type iBuilder interface {
 	setWindowType()
 	setDoorType()
 	setNumFloor()
-	getHouse() house
+	getHouse()
 }
 
-type normalBuilder struct {
-	windowType string
-	doorType   string
-	floor      int
-}
-
-type iglooBuilder struct {
-	windowType string
-	doorType   string
-	floor      int
-}
-
-func GetBuilder(builderType string) iBuilder {
-	if builderType == "normal" {
+func getBuilder(builderType string) iBuilder{
+	if iBuilder == "noraml" {
 		return &normalBuilder{}
 	}
 
-	if builderType == "igloo" {
-		return &iglooBuilder{}
-	}
+	// if builderType == "igloo" {
+	// 	return
+	// }
+
 	return nil
 }
 
-//NormalBuilder
-func NewNormalBuilder() *normalBuilder {
+func newNormalBuilder() *normalBuilder {
 	return &normalBuilder{}
 }
 
 func (b *normalBuilder) setWindowType() {
-	b.windowType = "Wooden Window"
+	return b.windowType = "Wooden window"
 }
 
 func (b *normalBuilder) setDoorType() {
-	b.doorType = "Wooden Door"
+	return b.doorType = "Wooden door"
 }
 
-func (b *normalBuilder) setNumFloor() {
-	b.floor = 2
+func (b *normalBuilder) setFloor() {
+	return b.floor = 2
 }
 
-func (b *normalBuilder) getHouse() house {
-	return house{
-		doorType:   b.doorType,
+func (b *normalBuilder) getHouse() {
+	return house {
+		doorType: b.doorType,
 		windowType: b.windowType,
-		floor:      b.floor,
+		floor: b.floor,
 	}
 }
 
-//iglooBuilder
-func NewIglooBuilder() *iglooBuilder {
-	return &iglooBuilder{}
-}
-
-func (b *iglooBuilder) setWindowType() {
-	b.windowType = "Snow Window"
-}
-
-func (b *iglooBuilder) setDoorType() {
-	b.doorType = "Snow Door"
-}
-
-func (b *iglooBuilder) setNumFloor() {
-	b.floor = 1
-}
-
-func (b *iglooBuilder) getHouse() house {
-	return house{
-		doorType:   b.doorType,
-		windowType: b.windowType,
-		floor:      b.floor,
-	}
-}
-
-//director
-func NewDirector(b iBuilder) *director {
-	return &director{
-		builder: b,
-	}
-}
-
-func (d *director) SetBuilder(b iBuilder) {
-	d.builder = b
-}
-
-func (d *director) BuildHouse() house {
-	d.builder.setDoorType()
-	d.builder.setWindowType()
-	d.builder.setNumFloor()
-	return d.builder.getHouse()
-}
