@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
+	"func/decorator"
 	"func/fabric"
-	"func/generator"
 )
 
 func main() {
@@ -71,13 +71,26 @@ func main() {
 	// shirtItem.UpdateAvailability()
 
 	////Generator
-	fmt.Println("Нет бутылок пива на стене")
+	// fmt.Println("Нет бутылок пива на стене")
 
-	for i := range generator.Count(1, 99) {
-		fmt.Println("Передай эту, поставь ее,", i, "бутылок пива на стене")
+	// for i := range generator.Count(1, 99) {
+	// 	fmt.Println("Передай эту, поставь ее,", i, "бутылок пива на стене")
+	// }
+
+	// fmt.Println(100, "бутылок пива на стене")
+
+	////Decorator
+	pizza := &decorator.VeggeMania{}
+
+	pizzaWithCheese := &decorator.CheeseTopping{
+		Pizza: pizza,
 	}
 
-	fmt.Println(100, "бутылок пива на стене")
+	pizzaWithCheeseAndTomato := &decorator.TomatoTopping{
+		Pizza: pizzaWithCheese,
+	}
+
+	fmt.Printf("Price of veganMania with tomato and chhese topping is %d\n", pizzaWithCheeseAndTomato.GetPrice())
 
 }
 
